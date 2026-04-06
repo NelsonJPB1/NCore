@@ -1,0 +1,28 @@
+name: Compilar NCore
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      - name: Instalar Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Compilar con Maven
+        run: mvn clean package -q
+
+      - name: Subir JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: NCore-v2.0
+          path: target/nCore-2.0.jar
+          retention-days: 30
