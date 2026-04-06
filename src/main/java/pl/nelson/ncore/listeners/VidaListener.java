@@ -38,7 +38,7 @@ public class VidaListener implements Listener {
     }
 
     private void setMaxHealth(Player player) {
-        var attr = player.getAttribute(Attribute.MAX_HEALTH);
+        var attr = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (attr != null) {
             attr.setBaseValue(20.0);
             player.setHealth(Math.min(player.getHealth(), 20.0));
